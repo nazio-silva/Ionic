@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Lista de Hoteis
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <h1>Hoteis</h1>
+
+
+  <ion-card *ngFor="let h of hoteis">
+    <ion-list>
+      <ion-item class="item" (click)="goToDetalhesPage(h)">
+        Nome: {{h.nome}}
+      </ion-item>
+
+      <ion-item>
+        Fone: {{h.fone}}
+        <br>
+        E-mail: {{h.email}}
+      </ion-item>
+      <button ion-button class="btn" (click)="goToAvaliacaoPage(h)">Avaliar</button>
+        Nota: {{h.hosp_avaliacao}}
+    </ion-list>
+  </ion-card>
+</ion-content>
