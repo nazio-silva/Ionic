@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { HoteisProvider } from '../../providers/hoteis/hoteis';
-import { DetalhesPage } from '../detalhes/detalhes';
+//import { DetalhesPage } from '../detalhes/detalhes';
 
 @Component({
   selector: 'page-home',
@@ -9,15 +9,20 @@ import { DetalhesPage } from '../detalhes/detalhes';
 })
 export class HomePage {
 
+  //public searchQuery: string[];
+  //public hot: string;
+
   public hoteis: any = [];
   public nota;
+  public ex;
+
 
   constructor(
     public navCtrl: NavController,
-    public navParams: NavParams, 
-    public hoteisProvider: HoteisProvider
+    public navParams: NavParams,
+    public hoteisProvider: HoteisProvider,
   ) {
-
+    this.listaHoteis();
   }
 
   ionViewDidLoad() {
@@ -26,20 +31,18 @@ export class HomePage {
 
   ionViewWillEnter() {
     this.nota = this.navParams.data.nota;
+    this.ex = this.navParams.data.ex;
     //console.log("Nota digitada", this.hotel);
   }
 
 
   public listaHoteis() {
-    this.hoteisProvider.listaHoteis()
+    return this.hoteisProvider.listaHoteis()
       .subscribe((hoteis) => {
         this.hoteis = hoteis.lista;
-        //console.log("Hoteis:", this.hoteis);
       },
       (erros) => {
-        //console.log("Error", erros);
-      }
-      )
+      })
   }
 
   // OBSERVAÇÂO
@@ -48,7 +51,26 @@ export class HomePage {
     this.navCtrl.push('DetalhesPage', hoteis);
   }
 
+  //Avaliacao do objeto hotel(h)
   goToAvaliacaoPage(h) {
     this.navCtrl.push('AvaliacaoPage', h);
   }
+
+  excluirHotel(h) {
+    console.log("Excluido",h);
+  }
+
+  getHotel(ev: any) {
+
+    let valor = ev.target.value;
+    
+    if (valor && valor.trim() != '') {
+      //console.log(valor.trim());
+      return this.hoteis = this.hoteis.filter((h) => {
+        return (h.nome.toLowerCase().indexOf(valor.toLowerCase()) > -1);
+      })
+    }
+    this.listaHoteis();
+  }
 }
+

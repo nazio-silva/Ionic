@@ -21,6 +21,8 @@ export class HoteisProvider {
       .catch(this.errorHandler);
   }
 
+  
+
   private dataHandler( res: Response ) {//dataHandler - Organiza os dados em formato Json em uma lista
     //console.log("aqui")
     let hot = res.json();

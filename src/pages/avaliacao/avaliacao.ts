@@ -11,7 +11,6 @@ import { HomePage } from '../home/home';
 export class AvaliacaoPage {
 
    public hotel;
-   //public hospedes;
 
   constructor(
     public navCtrl: NavController, 

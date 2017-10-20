@@ -8,7 +8,7 @@
 
 <ion-content padding>
 
-  <h1 *ngIf="detalhes?.nome">Detalhes:{{detalhes.nome}}</h1>
+  <h1 *ngIf="detalhes?.nome">{{detalhes.nome}}</h1>
 
   <ion-list> <!--Pegando o endereco e descricao do hotel-->
     <ion-item *ngIf="detalhes?.endereco">Endereço: {{ detalhes?.endereco }}</ion-item>

@@ -9,7 +9,8 @@ import { HomePage } from '../pages/home/home';
 import { HoteisProvider } from '../providers/hoteis/hoteis';
 import { HttpModule } from '@angular/http';
 import { DetalhesPageModule } from '../pages/detalhes/detalhes.module';
-import { AvaliacaoPageModule } from '../pages/avaliacao/avaliacao.module';//AQui
+import { AvaliacaoPageModule } from '../pages/avaliacao/avaliacao.module';
+//import { HospedagemProvider } from '../providers/hospedagem/hospedagem';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AvaliacaoPageModule } from '../pages/avaliacao/avaliacao.module';//AQui
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    HoteisProvider
+    HoteisProvider,
+    //HospedagemProvider
   ]
 })
 export class AppModule {}

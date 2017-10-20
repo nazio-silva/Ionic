@@ -10,20 +10,28 @@
 
   <h1>Hoteis</h1>
 
+  <ion-searchbar (ionInput)="getHotel($event)"></ion-searchbar>
 
   <ion-card *ngFor="let h of hoteis">
     <ion-list>
       <ion-item class="item" (click)="goToDetalhesPage(h)">
         Nome: {{h.nome}}
+          <p>Favoritos</p>
+          <ion-icon name="star">
+        </ion-icon>
       </ion-item>
-
+      <hr>
       <ion-item>
         Fone: {{h.fone}}
-        <br>
+        <hr>
         E-mail: {{h.email}}
+        <hr>
+        Avaliação: {{h.hosp_avaliacao}}
+        <hr>
+        Favoritar: {{h.hosp_favorito}}
       </ion-item>
-      <button ion-button class="btn" (click)="goToAvaliacaoPage(h)">Avaliar</button>
-        Nota: {{h.hosp_avaliacao}}
+      <button ion-button full (click)="goToAvaliacaoPage(h)">Avaliar</button>
+      <button ion-button block color="danger" (click)="excluirHotel(h.id)">Excluir</button>
     </ion-list>
   </ion-card>
 </ion-content>
